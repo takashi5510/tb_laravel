@@ -12,7 +12,7 @@ class ProfileController extends Controller
 	{
 		return view('admin.profile.edit');
 	}
-	public function uppdate()
+	public function update()
 	{
 		return redirect('admin/profile/edit');
 	}
