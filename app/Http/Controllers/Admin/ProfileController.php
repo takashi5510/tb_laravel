@@ -10,19 +10,25 @@ use App\Profile;
 class ProfileController extends Controller
 {
     //
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('admin.profile.edit');
+        $profile = Profile::find($request->id);
+        return view('admin.profile.edit', ['old' => $profile]);
     }
     public function update(Request $request)
     {
         $this->validate($request, Profile::$rules);
-        $profile = new Profile;
-        $form = $request->all();
 
-        unset($form['_token']);
-        $profile->fill($form);
-        $profile->save();
-        return redirect('admin/profile/edit');
+        $profile_id = $request->id;
+        if ($profile_id) {
+            $profile = Profile::find($profile_id);
+        } else {
+            $profile = new Profile;
+        }
+        $old = $request->all();
+
+        unset($old['_token']);
+        $profile->fill($old)->save();
+        return redirect("admin/profile/edit?id=$profile->id");
     }
 }
