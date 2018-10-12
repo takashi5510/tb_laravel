@@ -25,6 +25,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
         <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
         <div id="app">
