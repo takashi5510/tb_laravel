@@ -16,6 +16,9 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
+    if (\App::environment('production')) {
+        \URL::forceScheme('https');
+    }
     /**
      * Register any application services.
      *
